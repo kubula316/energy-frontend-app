@@ -1,9 +1,5 @@
-import { API_CONFIG } from '../config/api.config';
-import type {
-  EnergyMixResponse,
-  OptimalChargingRequest,
-  OptimalChargingResponse
-} from '../types/Energy.ts';
+import {API_CONFIG} from '../config/api.config';
+import type {EnergyMixResponse, OptimalChargingRequest, OptimalChargingResponse} from '../types/Energy';
 
 class EnergyService {
   private baseUrl: string;
@@ -25,8 +21,7 @@ class EnergyService {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      const data = await response.json();
-      return data;
+      return await response.json();
     } catch (error) {
       console.error('Error fetching energy mix:', error);
       throw error;
@@ -52,8 +47,7 @@ class EnergyService {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      const data = await response.json();
-      return data;
+      return await response.json();
     } catch (error) {
       console.error('Error fetching optimal charging:', error);
       throw error;

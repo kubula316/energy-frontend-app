@@ -1,13 +1,15 @@
-export enum EnergySource {
-  SOLAR = 'SOLAR',
-  WIND = 'WIND',
-  HYDRO = 'HYDRO',
-  COAL = 'COAL',
-  GAS = 'GAS',
-  NUCLEAR = 'NUCLEAR',
-  BIOMASS = 'BIOMASS',
-  OTHER = 'OTHER'
-}
+export const EnergySource = {
+  SOLAR: 'SOLAR',
+  WIND: 'WIND',
+  HYDRO: 'HYDRO',
+  COAL: 'COAL',
+  GAS: 'GAS',
+  NUCLEAR: 'NUCLEAR',
+  BIOMASS: 'BIOMASS',
+  OTHER: 'OTHER'
+} as const;
+
+export type EnergySource = typeof EnergySource[keyof typeof EnergySource];
 
 export interface GenerationMix {
   source: EnergySource;
