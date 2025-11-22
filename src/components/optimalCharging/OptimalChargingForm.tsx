@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import type {FontSize} from '../../types/Accessibility';
+import type {AppError} from '../../types/ErrorCodes';
 import {MIN_CHARGING_HOURS, MAX_CHARGING_HOURS} from '../../hooks';
 import {ErrorMessage} from '../shared';
 import {ActionButton} from './ActionButton';
@@ -9,7 +10,7 @@ import type {FormEvent} from 'react';
 interface OptimalChargingFormProps {
     onSubmit: (hours: number) => void;
     loading: boolean;
-    error: Error | null;
+    error: AppError | Error | null;
     fontSize: FontSize;
 }
 

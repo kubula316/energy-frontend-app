@@ -1,11 +1,12 @@
 import { useState, useCallback } from 'react';
 import { getOptimalCharging } from '../services/EnergyService';
 import type { OptimalChargingResponse } from '../types/Energy';
+import type { AppError } from '../types/ErrorCodes';
 
 interface UseOptimalChargingReturn {
   data: OptimalChargingResponse | null;
   loading: boolean;
-  error: Error | null;
+  error: AppError | Error | null;
   fetchOptimalCharging: (hours: number) => Promise<void>;
   reset: () => void;
 }
@@ -13,8 +14,16 @@ interface UseOptimalChargingReturn {
 const MIN_CHARGING_HOURS = 1;
 const MAX_CHARGING_HOURS = 6;
 
-const normalizeError = (error: unknown): Error => {
-  return error instanceof Error ? error : new Error('Unknown error');
+const normalizeError = (error: unknown): AppError | Error => {
+  if (error && typeof error === 'object' && 'code' in error && 'title' in error) {
+    return error as AppError;
+  }
+  
+  if (error instanceof Error) {
+    return error;
+  }
+  
+  return new Error('Unknown error');
 };
 
 const validateChargingHours = (hours: number): void => {
@@ -31,7 +40,7 @@ const validateChargingHours = (hours: number): void => {
 export const useOptimalCharging = (): UseOptimalChargingReturn => {
   const [data, setData] = useState<OptimalChargingResponse | null>(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<Error | null>(null);
+  const [error, setError] = useState<AppError | Error | null>(null);
 
   const fetchOptimalCharging = useCallback(async (hours: number) => {
 
