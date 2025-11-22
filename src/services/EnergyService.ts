@@ -1,58 +1,51 @@
-import {API_CONFIG} from '../config/api.config';
-import type {EnergyMixResponse, OptimalChargingRequest, OptimalChargingResponse} from '../types/Energy';
+import { API_CONFIG } from '../config/api.config';
+import type { EnergyMixResponse, OptimalChargingResponse, DailyEnergyMix } from '../types/Energy';
+import { transformApiToDailyEnergyMix } from '../types/Energy';
+import { ErrorCode, createAppError, mapHttpStatusToErrorCode } from '../types/ErrorCodes';
 
-class EnergyService {
-  private baseUrl: string;
 
-  constructor() {
-    this.baseUrl = API_CONFIG.BASE_URL;
+async function fetchApi<T>(endpoint: string, options?: RequestInit): Promise<T> {
+  let response: Response;
+  
+  try {
+    response = await fetch(`${API_CONFIG.BASE_URL}${endpoint}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      ...options,
+    });
+  } catch (error) {
+
+    if (error instanceof TypeError && error.message.includes('fetch')) {
+      throw createAppError(ErrorCode.NETWORK_ERROR, error as Error);
+    }
+    throw createAppError(ErrorCode.UNKNOWN_ERROR, error instanceof Error ? error : undefined);
   }
 
-  async getEnergyMix(): Promise<EnergyMixResponse> {
-    try {
-      const response = await fetch(`${this.baseUrl}${API_CONFIG.ENDPOINTS.MIX}`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      return await response.json();
-    } catch (error) {
-      console.error('Error fetching energy mix:', error);
-      throw error;
-    }
+  if (!response.ok) {
+    const errorCode = mapHttpStatusToErrorCode(response.status);
+    throw createAppError(errorCode);
   }
 
-  async getOptimalCharging(
-    request: OptimalChargingRequest
-  ): Promise<OptimalChargingResponse> {
-    try {
-      const response = await fetch(
-        `${this.baseUrl}${API_CONFIG.ENDPOINTS.OPTIMAL_CHARGING}`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(request),
-        }
-      );
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      return await response.json();
-    } catch (error) {
-      console.error('Error fetching optimal charging:', error);
-      throw error;
-    }
+  try {
+    return await response.json();
+  } catch (error) {
+    throw createAppError(ErrorCode.UNKNOWN_ERROR, error instanceof Error ? error : undefined);
   }
 }
 
-export const energyService = new EnergyService();
+
+export async function getEnergyMix(): Promise<DailyEnergyMix[]> {
+  const apiData = await fetchApi<EnergyMixResponse>(API_CONFIG.ENDPOINTS.MIX);
+  return apiData.map(transformApiToDailyEnergyMix);
+}
+
+
+export async function getOptimalCharging(duration: number): Promise<OptimalChargingResponse> {
+  const queryParams = new URLSearchParams({
+    duration: duration.toString(),
+  });
+  return fetchApi<OptimalChargingResponse>(`${API_CONFIG.ENDPOINTS.OPTIMAL_CHARGING}?${queryParams}`);
+}

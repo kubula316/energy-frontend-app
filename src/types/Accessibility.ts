@@ -20,5 +20,5 @@ export interface AccessibilitySettings {
 
 export const DEFAULT_ACCESSIBILITY_SETTINGS: AccessibilitySettings = {
   fontSize: FontSize.MEDIUM,
-  theme: Theme.LIGHT,
+  theme: Theme.DARK,
 };

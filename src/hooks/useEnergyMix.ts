@@ -1,47 +1,44 @@
-import { useState, useEffect } from 'react';
-import { energyService } from '../services/EnergyService';
-import type { EnergyMixResponse } from '../types/Energy';
+import { useState, useEffect, useCallback } from 'react';
+import { getEnergyMix } from '../services/EnergyService';
+import type { DailyEnergyMix } from '../types/Energy';
 
-interface UseEnergyMixState {
-  data: EnergyMixResponse | null;
+interface UseEnergyMixReturn {
+  data: DailyEnergyMix[] | null;
   loading: boolean;
   error: Error | null;
-}
-
-interface UseEnergyMixReturn extends UseEnergyMixState {
   refetch: () => Promise<void>;
 }
 
-export const useEnergyMix = (autoFetch: boolean = true): UseEnergyMixReturn => {
-  const [state, setState] = useState<UseEnergyMixState>({
-    data: null,
-    loading: autoFetch,
-    error: null,
-  });
+const normalizeError = (error: unknown): Error => {
+  return error instanceof Error ? error : new Error('Unknown error');
+};
 
-  const fetchEnergyMix = async () => {
-    setState(prev => ({ ...prev, loading: true, error: null }));
+export const useEnergyMix = (autoFetch: boolean = true): UseEnergyMixReturn => {
+  const [data, setData] = useState<DailyEnergyMix[] | null>(null);
+  const [loading, setLoading] = useState(autoFetch);
+  const [error, setError] = useState<Error | null>(null);
+
+  const fetchEnergyMix = useCallback(async () => {
+
+    setLoading(true);
+    setError(null);
 
     try {
-      const data = await energyService.getEnergyMix();
-      setState({ data, loading: false, error: null });
-    } catch (error) {
-      setState({
-        data: null,
-        loading: false,
-        error: error instanceof Error ? error : new Error('Unknown error'),
-      });
+      const result = await getEnergyMix();
+      setData(result);
+    } catch (err) {
+      setError(normalizeError(err));
+      setData(null);
+    } finally {
+      setLoading(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     if (autoFetch) {
-      fetchEnergyMix();
+      void fetchEnergyMix();
     }
-  }, [autoFetch]);
+  }, [autoFetch, fetchEnergyMix]);
 
-  return {
-    ...state,
-    refetch: fetchEnergyMix,
-  };
+  return { data, loading, error, refetch: fetchEnergyMix };
 };
