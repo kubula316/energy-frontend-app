@@ -1,73 +1,70 @@
-# React + TypeScript + Vite
+# Energy Frontend App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Modern React dashboard for UK energy mix visualization and EV charging optimization
 
-Currently, two official plugins are available:
+[![React](https://img.shields.io/badge/React-19.2-61dafb)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-7.2-646cff)](https://vitejs.dev/)
+[![Tailwind](https://img.shields.io/badge/Tailwind-4.1-38bdf8)](https://tailwindcss.com/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**🔋 Energy Mix Visualization**
+- 3-day UK energy forecast
+- Clean energy percentage badges
+- ![img.png](docs/img.png)
 
-## Expanding the ESLint configuration
+**⚡ Optimal Charging Calculator**
+- Smart EV charging scheduler based on renewable energy availability
+- Visual results with start time, end time, and clean energy %
+- ![img_1.png](docs/img_1.png)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+**♿ Accessibility**
+- Font sizes: Small, Medium, Large (localStorage persistence)
+- Light/Dark theme toggle
+- ![img_2.png](docs/img_2.png)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🛠️ Tech Stack
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+**Core:** React 19, TypeScript 5.9, Vite 7.2, Tailwind CSS 4.1  
+**Charts:** Recharts 3.4  
+**Utils:** date-fns 4.1 (UK locale)  
+**Testing:** Cypress 15.7
+
+---
+
+## 📁 Project Structure
+
+```
+src/
+├── components/          # UI Components (feature-based)
+│   ├── accessibility/  # Font & theme controls
+│   ├── energyMix/      # Energy visualization
+│   ├── optimalCharging/# Charging calculator
+│   └── shared/         # Reusable components
+├── hooks/              # Custom React hooks
+│   ├── useEnergyMix.ts
+│   ├── useOptimalCharging.ts
+│   └── useAccessibility.ts
+├── services/           # API communication
+├── types/              # TypeScript interfaces
+├── utils/              # Helper functions
+└── config/             # Configuration
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🔌 API Integration
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+**Backend Endpoints:**
+```
+GET /energy/mix
+Response: [{ date, averageGenerationMix, cleanEnergyPercentage }]
+
+GET /energy/optimal-charging?duration=3
+Response: { startTime, endTime, averageCleanEnergyPercentage }
 ```
