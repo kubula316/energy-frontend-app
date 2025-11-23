@@ -43,11 +43,11 @@ export const DailyEnergyMixChart = ({data, fontSize}: DailyEnergyMixChartProps) 
                 </p>
             </div>
 
-            <div className="flex justify-center mb-4">
+            <div className="flex justify-center mb-8 mt-2">
                 <CleanEnergyBadge percentage={data.cleanEnergyPercentage} size="large"/>
             </div>
 
-            <ResponsiveContainer width="100%" height={300}>
+            <ResponsiveContainer width="100%" height={440}>
                 <PieChart>
                     <Pie data={chartData} cx="50%" cy="50%" labelLine={false} outerRadius={100} fill="#8884d8" dataKey="value" animationDuration={800}>
                         {chartData.map((entry, index) => (

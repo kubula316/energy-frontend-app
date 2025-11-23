@@ -21,7 +21,7 @@ export const ChartLegend = ({payload, chartData}: ChartLegendProps) => {
     }
 
     return (
-        <div className="flex flex-wrap justify-center gap-3 mt-4">
+        <div className="flex flex-wrap justify-center gap-3 mt-6">
             {payload.map((entry, index) => {
 
                 const dataItem = chartData.find(item => item.name === entry.value);
