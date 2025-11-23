@@ -22,14 +22,23 @@ export const ChartLegend = ({payload, chartData}: ChartLegendProps) => {
 
     return (
         <div className="flex flex-wrap justify-center gap-3 mt-4">
-            {payload.map((entry, index) => (
-                <div key={`legend-${index}`} className="flex items-center gap-2 text-sm">
-                    <div className="w-3 h-3 rounded-full" style={{backgroundColor: entry.color}}/>
-                    <span className="text-gray-700 dark:text-gray-300">
-                        {entry.value}: {chartData[index].value.toFixed(1)}%
-                    </span>
-                </div>
-            ))}
+            {payload.map((entry, index) => {
+
+                const dataItem = chartData.find(item => item.name === entry.value);
+                
+                if (!dataItem) {
+                    return null;
+                }
+                
+                return (
+                    <div key={`legend-${index}`} className="flex items-center gap-2 text-sm">
+                        <div className="w-3 h-3 rounded-full" style={{backgroundColor: entry.color}}/>
+                        <span className="text-gray-700 dark:text-gray-300">
+                            {entry.value}: {dataItem.value.toFixed(1)}%
+                        </span>
+                    </div>
+                );
+            })}
         </div>
     );
 };
