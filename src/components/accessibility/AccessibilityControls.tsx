@@ -1,4 +1,4 @@
-import type { AccessibilitySettings, FontSize, Theme } from '../../types/Accessibility';
+import type { AccessibilitySettings, FontSize, Theme } from '../../types/accessibility.ts';
 import { FontSizeControls } from './FontSizeControls';
 import { ThemeToggle } from './ThemeToggle';
 

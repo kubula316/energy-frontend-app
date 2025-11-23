@@ -1,6 +1,6 @@
 import {PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip} from 'recharts';
-import type {DailyEnergyMix} from '../../types/Energy';
-import type {FontSize} from '../../types/Accessibility';
+import type {DailyEnergyMix} from '../../types/energy.ts';
+import type {FontSize} from '../../types/accessibility.ts';
 import {CleanEnergyBadge} from '../shared';
 import {ENERGY_SOURCE_COLORS, ENERGY_SOURCE_LABELS} from '../../constants/energyColors';
 import {formatDate, getDateLabel} from '../../utils';

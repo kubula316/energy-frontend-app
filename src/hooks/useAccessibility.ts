@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import type { AccessibilitySettings, FontSize, Theme } from '../types/Accessibility';
-import { DEFAULT_ACCESSIBILITY_SETTINGS } from '../types/Accessibility';
+import type { AccessibilitySettings, FontSize, Theme } from '../types/accessibility.ts';
+import { DEFAULT_ACCESSIBILITY_SETTINGS } from '../types/accessibility.ts';
 
 const STORAGE_KEY = 'energy-app-accessibility';
 

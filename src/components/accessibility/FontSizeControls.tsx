@@ -1,4 +1,4 @@
-import { FontSize } from '../../types/Accessibility';
+import { FontSize } from '../../types/accessibility.ts';
 
 interface FontSizeControlsProps {
   currentSize: FontSize;

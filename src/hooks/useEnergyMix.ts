@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
-import { getEnergyMix } from '../services/EnergyService';
-import type { DailyEnergyMix } from '../types/Energy';
-import type { AppError } from '../types/ErrorCodes';
+import { getEnergyMix } from '../services/energyService.ts';
+import type { DailyEnergyMix } from '../types/energy.ts';
+import type { AppError } from '../types/errorCodes.ts';
 
 interface UseEnergyMixReturn {
   data: DailyEnergyMix[] | null;

@@ -4,7 +4,7 @@ import {EnergyMixPanelHeader} from './EnergyMixPanelHeader';
 import {EnergyMixPanelFooter} from './EnergyMixPanelFooter';
 import {LoadingSpinner} from '../shared';
 import {ErrorMessage} from '../shared';
-import type {FontSize} from '../../types/Accessibility';
+import type {FontSize} from '../../types/accessibility.ts';
 
 interface EnergyMixPanelProps {
     fontSize: FontSize;

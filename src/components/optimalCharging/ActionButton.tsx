@@ -1,4 +1,4 @@
-import type { FontSize } from '../../types/Accessibility';
+import type { FontSize } from '../../types/accessibility.ts';
 import type {ReactNode} from "react";
 
 type ButtonVariant = 'primary' | 'secondary';

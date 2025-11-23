@@ -1,4 +1,4 @@
-import { Theme } from '../../types/Accessibility';
+import { Theme } from '../../types/accessibility.ts';
 
 interface ThemeToggleProps {
   currentTheme: Theme;

@@ -1,4 +1,4 @@
-import { EnergySource } from '../types/Energy';
+import { EnergySource } from '../types/energy.ts';
 
 export const ENERGY_SOURCE_COLORS: Record<EnergySource, string> = {
   [EnergySource.SOLAR]: '#FDB022',

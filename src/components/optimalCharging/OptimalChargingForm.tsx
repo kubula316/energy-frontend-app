@@ -1,6 +1,6 @@
 import {useState} from 'react';
-import type {FontSize} from '../../types/Accessibility';
-import type {AppError} from '../../types/ErrorCodes';
+import type {FontSize} from '../../types/accessibility.ts';
+import type {AppError} from '../../types/errorCodes.ts';
 import {MIN_CHARGING_HOURS, MAX_CHARGING_HOURS} from '../../hooks';
 import {ErrorMessage} from '../shared';
 import {ActionButton} from './ActionButton';

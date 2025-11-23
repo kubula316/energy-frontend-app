@@ -1,4 +1,4 @@
-import type { FontSize } from '../../types/Accessibility';
+import type { FontSize } from '../../types/accessibility.ts';
 
 interface EnergyMixPanelHeaderProps {
   fontSize: FontSize;

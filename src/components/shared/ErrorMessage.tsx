@@ -1,4 +1,4 @@
-import type { AppError } from '../../types/ErrorCodes';
+import type { AppError } from '../../types/errorCodes.ts';
 
 interface ErrorMessageProps {
   error: AppError | Error | string;

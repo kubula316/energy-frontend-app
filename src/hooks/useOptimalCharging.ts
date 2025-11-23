@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
-import { getOptimalCharging } from '../services/EnergyService';
-import type { OptimalChargingResponse } from '../types/Energy';
-import type { AppError } from '../types/ErrorCodes';
+import { getOptimalCharging } from '../services/energyService.ts';
+import type { OptimalChargingResponse } from '../types/energy.ts';
+import type { AppError } from '../types/errorCodes.ts';
 
 interface UseOptimalChargingReturn {
   data: OptimalChargingResponse | null;

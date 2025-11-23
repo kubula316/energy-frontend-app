@@ -1,5 +1,5 @@
-import type { OptimalChargingResponse } from '../../types/Energy';
-import type { FontSize } from '../../types/Accessibility';
+import type { OptimalChargingResponse } from '../../types/energy.ts';
+import type { FontSize } from '../../types/accessibility.ts';
 import { formatDateWithTime } from '../../utils';
 import { CleanEnergyBadge } from '../shared';
 

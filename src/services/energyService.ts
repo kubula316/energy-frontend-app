@@ -1,7 +1,7 @@
 import { API_CONFIG } from '../config/api.config';
-import type { EnergyMixResponse, OptimalChargingResponse, DailyEnergyMix } from '../types/Energy';
-import { transformApiToDailyEnergyMix } from '../types/Energy';
-import { ErrorCode, createAppError, mapHttpStatusToErrorCode } from '../types/ErrorCodes';
+import type { EnergyMixResponse, OptimalChargingResponse, DailyEnergyMix } from '../types/energy.ts';
+import { transformApiToDailyEnergyMix } from '../types/energy.ts';
+import { ErrorCode, createAppError, mapHttpStatusToErrorCode } from '../types/errorCodes.ts';
 
 
 async function fetchApi<T>(endpoint: string, options?: RequestInit): Promise<T> {

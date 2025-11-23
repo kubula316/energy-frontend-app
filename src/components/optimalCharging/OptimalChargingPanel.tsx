@@ -1,5 +1,5 @@
 import { useOptimalCharging } from '../../hooks';
-import type { FontSize } from '../../types/Accessibility';
+import type { FontSize } from '../../types/accessibility.ts';
 import { LoadingSpinner } from '../shared';
 import { OptimalChargingPanelHeader } from './OptimalChargingPanelHeader';
 import { OptimalChargingPanelFooter } from './OptimalChargingPanelFooter';
