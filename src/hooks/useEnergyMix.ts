@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { getEnergyMix } from '../services/energyService.ts';
 import type { DailyEnergyMix } from '../types/energy.ts';
 import type { AppError } from '../types/errorCodes.ts';
+import {normalizeError} from "../utils/errorHelpers.ts";
 
 interface UseEnergyMixReturn {
   data: DailyEnergyMix[] | null;
@@ -9,18 +10,6 @@ interface UseEnergyMixReturn {
   error: AppError | Error | null;
   refetch: () => Promise<void>;
 }
-
-const normalizeError = (error: unknown): AppError | Error => {
-  if (error && typeof error === 'object' && 'code' in error && 'title' in error) {
-    return error as AppError;
-  }
-  
-  if (error instanceof Error) {
-    return error;
-  }
-  
-  return new Error('Unknown error');
-};
 
 export const useEnergyMix = (autoFetch: boolean = true): UseEnergyMixReturn => {
   const [data, setData] = useState<DailyEnergyMix[] | null>(null);

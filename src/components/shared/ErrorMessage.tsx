@@ -1,4 +1,5 @@
 import type { AppError } from '../../types/errorCodes.ts';
+import {isAppError} from "../../utils/errorHelpers.ts";
 
 interface ErrorMessageProps {
   error: AppError | Error | string;
@@ -6,10 +7,6 @@ interface ErrorMessageProps {
 }
 
 export const ErrorMessage = ({ error, onRetry }: ErrorMessageProps) => {
-
-  const isAppError = (err: any): err is AppError => {
-    return err && typeof err === 'object' && 'code' in err && 'title' in err;
-  };
 
   const getErrorDetails = () => {
     if (isAppError(error)) {

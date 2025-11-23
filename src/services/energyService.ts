@@ -21,14 +21,10 @@ async function fetchApi<T>(endpoint: string, options?: RequestInit): Promise<T> 
     }
     throw createAppError(ErrorCode.UNKNOWN_ERROR, error instanceof Error ? error : undefined);
   }
-
-
   if (!response.ok) {
     const errorCode = mapHttpStatusToErrorCode(response.status);
     throw createAppError(errorCode);
   }
-
-
   try {
     return await response.json();
   } catch (error) {

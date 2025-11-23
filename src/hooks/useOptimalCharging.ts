@@ -2,6 +2,7 @@ import { useState, useCallback } from 'react';
 import { getOptimalCharging } from '../services/energyService.ts';
 import type { OptimalChargingResponse } from '../types/energy.ts';
 import type { AppError } from '../types/errorCodes.ts';
+import {normalizeError} from "../utils/errorHelpers.ts";
 
 interface UseOptimalChargingReturn {
   data: OptimalChargingResponse | null;
@@ -13,18 +14,6 @@ interface UseOptimalChargingReturn {
 
 const MIN_CHARGING_HOURS = 1;
 const MAX_CHARGING_HOURS = 6;
-
-const normalizeError = (error: unknown): AppError | Error => {
-  if (error && typeof error === 'object' && 'code' in error && 'title' in error) {
-    return error as AppError;
-  }
-  
-  if (error instanceof Error) {
-    return error;
-  }
-  
-  return new Error('Unknown error');
-};
 
 const validateChargingHours = (hours: number): void => {
   if (!Number.isInteger(hours)) {
