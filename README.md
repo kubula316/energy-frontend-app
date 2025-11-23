@@ -58,7 +58,7 @@ src/
 
 ---
 
-## 🔌 API Integration
+## 🔌 API Integration https://github.com/kubula316/energy-backend-app
 
 **Backend Endpoints:**
 ```
