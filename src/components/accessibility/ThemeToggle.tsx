@@ -13,7 +13,7 @@ export const ThemeToggle = ({ currentTheme, onThemeChange }: ThemeToggleProps) =
   return (
     <div className="flex items-center gap-2">
       <span className="text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wide">
-        Motyw:
+        Theme:
       </span>
       <div className="flex gap-1">
         <button
@@ -21,20 +21,20 @@ export const ThemeToggle = ({ currentTheme, onThemeChange }: ThemeToggleProps) =
           className={`${buttonBaseClass} ${
             currentTheme === Theme.LIGHT ? activeClass : inactiveClass
           }`}
-          aria-label="Jasny motyw"
+          aria-label="Light theme"
           aria-pressed={currentTheme === Theme.LIGHT}
         >
-          ☀️ Jasny
+          ☀️ Light
         </button>
         <button
           onClick={() => onThemeChange(Theme.DARK)}
           className={`${buttonBaseClass} ${
             currentTheme === Theme.DARK ? activeClass : inactiveClass
           }`}
-          aria-label="Ciemny motyw"
+          aria-label="Dark theme"
           aria-pressed={currentTheme === Theme.DARK}
         >
-          🌙 Ciemny
+          🌙 Dark
         </button>
       </div>
     </div>

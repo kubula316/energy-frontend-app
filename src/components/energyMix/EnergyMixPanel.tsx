@@ -18,8 +18,7 @@ export const EnergyMixPanel = ({fontSize}: EnergyMixPanelProps) => {
             <div
                 className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 p-8">
                 <div className="flex justify-center items-center py-20">
-                    <LoadingSpinner size="large" message="Ładowanie danych miksu energetycznego..."
-                                    fontSize={fontSize}/>
+                    <LoadingSpinner size="large" message="Loading energy mix data..." fontSize={fontSize}/>
                 </div>
             </div>
         );
@@ -27,8 +26,7 @@ export const EnergyMixPanel = ({fontSize}: EnergyMixPanelProps) => {
 
     if (error) {
         return (
-            <div
-                className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 p-8">
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 p-8">
                 <div className="flex justify-center items-center py-12">
                     <ErrorMessage error={error} onRetry={refetch}/>
                 </div>
@@ -41,7 +39,7 @@ export const EnergyMixPanel = ({fontSize}: EnergyMixPanelProps) => {
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 p-8">
                 <div className="flex justify-center items-center py-20">
                     <p className="text-gray-600 dark:text-gray-400">
-                        Brak danych do wyświetlenia
+                        No data to display
                     </p>
                 </div>
             </div>

@@ -1,10 +1,10 @@
 import { format, parseISO, isToday, isTomorrow, differenceInDays, startOfDay } from 'date-fns';
-import { pl } from 'date-fns/locale';
+import { enGB } from 'date-fns/locale';
 
 export const formatDate = (dateString: string): string => {
   try {
     const date = parseISO(dateString);
-    return format(date, 'dd MMMM yyyy', { locale: pl });
+    return format(date, 'dd MMMM yyyy', { locale: enGB });
   } catch {
     return dateString;
   }
@@ -13,7 +13,7 @@ export const formatDate = (dateString: string): string => {
 export const formatDateWithTime = (dateTimeString: string): string => {
   try {
     const date = parseISO(dateTimeString);
-    return format(date, 'd MMMM, HH:mm', { locale: pl });
+    return format(date, 'd MMMM, HH:mm', { locale: enGB });
   } catch {
     return dateTimeString;
   }
@@ -26,25 +26,25 @@ export const getDateLabel = (dateString: string): string => {
     const targetDate = startOfDay(date);
     
     if (isToday(date)) {
-      return 'Dzisiaj';
+      return 'Today';
     }
     
     if (isTomorrow(date)) {
-      return 'Jutro';
+      return 'Tomorrow';
     }
     
     const daysDiff = differenceInDays(targetDate, today);
     
     if (daysDiff === 2) {
-      return 'Pojutrze';
+      return 'Day after tomorrow';
     }
     
     if (daysDiff > 0 && daysDiff <= 7) {
-      return `Za ${daysDiff} dni`;
+      return `In ${daysDiff} days`;
     }
     
     if (daysDiff < 0 && daysDiff >= -7) {
-      return `${Math.abs(daysDiff)} dni temu`;
+      return `${Math.abs(daysDiff)} days ago`;
     }
     
     return formatDate(dateString);

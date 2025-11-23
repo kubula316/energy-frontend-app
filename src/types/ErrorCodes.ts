@@ -20,38 +20,38 @@ export interface AppError {
 
 export const ERROR_MESSAGES: Record<ErrorCode, { title: string; message: string; canRetry: boolean }> = {
   [ErrorCode.NETWORK_ERROR]: {
-    title: 'Błąd połączenia',
-    message: 'Nie można połączyć się z serwerem. Sprawdź swoje połączenie internetowe.',
+    title: 'Connection Error',
+    message: 'Unable to connect to the server. Please check your internet connection.',
     canRetry: true,
   },
   [ErrorCode.TIMEOUT_ERROR]: {
-    title: 'Przekroczono czas oczekiwania',
-    message: 'Serwer nie odpowiedział w odpowiednim czasie. Spróbuj ponownie.',
+    title: 'Timeout Error',
+    message: 'The server did not respond in time. Please try again.',
     canRetry: true,
   },
   [ErrorCode.SERVER_ERROR]: {
-    title: 'Błąd serwera',
-    message: 'Wystąpił problem po stronie serwera. Spróbuj ponownie za chwilę.',
+    title: 'Server Error',
+    message: 'A problem occurred on the server side. Please try again later.',
     canRetry: true,
   },
   [ErrorCode.NOT_FOUND]: {
-    title: 'Nie znaleziono',
-    message: 'Żądany zasób nie został znaleziony.',
+    title: 'Not Found',
+    message: 'The requested resource was not found.',
     canRetry: false,
   },
   [ErrorCode.BAD_REQUEST]: {
-    title: 'Nieprawidłowe żądanie',
-    message: 'Dane wysłane do serwera są nieprawidłowe. Sprawdź wprowadzone wartości.',
+    title: 'Bad Request',
+    message: 'The data sent to the server is invalid. Please check your input.',
     canRetry: false,
   },
   [ErrorCode.VALIDATION_ERROR]: {
-    title: 'Błąd walidacji',
-    message: 'Wprowadzone dane są nieprawidłowe.',
+    title: 'Validation Error',
+    message: 'The entered data is invalid.',
     canRetry: false,
   },
   [ErrorCode.UNKNOWN_ERROR]: {
-    title: 'Nieznany błąd',
-    message: 'Wystąpił nieoczekiwany błąd. Spróbuj ponownie.',
+    title: 'Unknown Error',
+    message: 'An unexpected error occurred. Please try again.',
     canRetry: true,
   },
 };

@@ -33,7 +33,7 @@ export const OptimalChargingPanel = ({ fontSize }: OptimalChargingPanelProps) =>
             />
             {loading && (
               <div className="flex justify-center py-12 mt-6">
-                <LoadingSpinner size="large" message="Analizuję prognozy energii..." fontSize={fontSize}/>
+                <LoadingSpinner size="large" message="Analyzing energy forecasts..." fontSize={fontSize}/>
               </div>
             )}
           </>
@@ -44,7 +44,7 @@ export const OptimalChargingPanel = ({ fontSize }: OptimalChargingPanelProps) =>
             <OptimalChargingResult data={data} fontSize={fontSize} />
 
             <ActionButton onClick={reset} variant="secondary" fontSize={fontSize} icon="🔄">
-              Oblicz ponownie
+              Calculate again
             </ActionButton>
           </div>
         )}

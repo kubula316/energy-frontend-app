@@ -34,7 +34,7 @@ export const ActionButton = ({
   }[fontSize];
 
   const variantClasses = {
-    primary: 'bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white shadow-md hover:shadow-lg transform hover:scale-105',
+    primary: 'bg-gradient-to-r from-blue-500 to-green-500 hover:from-purple-600 hover:to-pink-600 text-white shadow-md hover:shadow-lg transform hover:scale-105',
     secondary: 'bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-white',
   };
 

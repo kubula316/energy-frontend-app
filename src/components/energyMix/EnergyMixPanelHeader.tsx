@@ -37,17 +37,17 @@ export const EnergyMixPanelHeader = ({ fontSize }: EnergyMixPanelHeaderProps) =>
           📊
         </span>
         <h2 className={`${titleSize} font-bold text-white`}>
-          Prognoza miksu energetycznego
+          Energy Mix Forecast
         </h2>
       </div>
       <div className={`flex items-center gap-4 ${metaSize} text-white/90`}>
         <span className="flex items-center gap-1.5">
           <span className={metaIconSize}>📅</span>
-          Następne 3 dni
+          Next 3 days
         </span>
         <span className="hidden sm:inline text-white/60">•</span>
         <span className="hidden sm:flex items-center gap-1.5">
-          Dane dla UK
+          Data for UK
         </span>
       </div>
     </div>

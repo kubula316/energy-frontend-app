@@ -47,7 +47,7 @@ export const OptimalChargingForm = ({onSubmit, loading, error, fontSize,}: Optim
             <div>
                 <label htmlFor="charging-hours"
                        className={`block ${labelSize} font-medium text-gray-700 dark:text-gray-300 mb-2`}>
-                    Ile godzin potrzebujesz na ładowanie?
+                    How many hours do you need for charging?
                 </label>
                 <div className="relative">
                     <input
@@ -58,21 +58,19 @@ export const OptimalChargingForm = ({onSubmit, loading, error, fontSize,}: Optim
                         value={hours}
                         onChange={(e) => setHours(e.target.value)}
                         className={`w-full ${inputSize} px-4 py-3 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 dark:bg-gray-700 dark:text-white transition-colors`}
-                        placeholder="np. 3"
+                        placeholder="e.g. 3"
                         aria-describedby="hours-help"
                     />
                     <span className={`absolute right-4 top-1/2 -translate-y-1/2 ${labelSize} text-gray-500 dark:text-gray-400`}>
-                        godz.
+                        hrs
                     </span>
                 </div>
                 <p id="hours-help" className={`mt-2 ${labelSize} text-gray-600 dark:text-gray-400`}>
-                    Podaj liczbę godzin od {MIN_CHARGING_HOURS} do {MAX_CHARGING_HOURS}
+                    Enter a number of hours from {MIN_CHARGING_HOURS} to {MAX_CHARGING_HOURS}
                 </p>
             </div>
 
-            {error && (
-                <ErrorMessage error={error}/>
-            )}
+            {error && (<ErrorMessage error={error}/>)}
 
             <ActionButton
                 type="submit"
@@ -82,7 +80,7 @@ export const OptimalChargingForm = ({onSubmit, loading, error, fontSize,}: Optim
                 fontSize={fontSize}
                 icon={loading ? undefined : '🔍'}
             >
-                {loading ? (<LoadingSpinner size="small"/>) : ('Znajdź optymalny czas')}
+                {loading ? (<LoadingSpinner size="small"/>) : ('Find optimal time')}
             </ActionButton>
         </form>
     );

@@ -22,14 +22,14 @@ export const ErrorMessage = ({ error, onRetry }: ErrorMessageProps) => {
     
     if (error instanceof Error) {
       return {
-        title: 'Wystąpił błąd',
+        title: 'An Error Occurred',
         message: error.message,
         canRetry: true,
       };
     }
     
     return {
-      title: 'Wystąpił błąd',
+      title: 'An Error Occurred',
       message: error,
       canRetry: true,
     };
@@ -54,7 +54,7 @@ export const ErrorMessage = ({ error, onRetry }: ErrorMessageProps) => {
               onClick={onRetry}
               className="mt-4 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md text-sm font-medium transition-colors"
             >
-              Spróbuj ponownie
+              Try again
             </button>
           )}
         </div>

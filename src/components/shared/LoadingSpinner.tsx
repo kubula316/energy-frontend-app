@@ -28,7 +28,7 @@ export const LoadingSpinner = ({
       <div 
         className={`animate-spin rounded-full border-blue-600 dark:border-blue-400 ${sizeClasses[size]}`}
         role="status"
-        aria-label="Ładowanie"
+        aria-label="Loading"
       />
       {message && (
         <p className={`mt-4 text-gray-600 dark:text-gray-400 ${messageSizeClasses[fontSize]}`}>

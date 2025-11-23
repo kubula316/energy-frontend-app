@@ -48,10 +48,10 @@ export const CleanEnergyBadge = ({percentage, size = 'medium'}: CleanEnergyBadge
     <div 
       className={`inline-flex items-center gap-2 rounded-full border ${colors.bg} ${colors.border} ${sizeClasses[size]} ${colors.text} font-semibold`}
       role="status"
-      aria-label={`${percentage}% czystej energii`}
+      aria-label={`${percentage}% clean energy`}
     >
       <span aria-hidden="true">{colors.icon}</span>
-      <span>{percentage.toFixed(1)}% czystej energii</span>
+      <span>{percentage.toFixed(1)}% clean energy</span>
     </div>
   );
 };

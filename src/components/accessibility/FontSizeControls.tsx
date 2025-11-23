@@ -13,7 +13,7 @@ export const FontSizeControls = ({ currentSize, onSizeChange }: FontSizeControls
   return (
     <div className="flex items-center gap-2">
       <span className="text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wide">
-        Czcionka:
+        Font:
       </span>
       <div className="flex gap-1">
         <button
@@ -21,7 +21,7 @@ export const FontSizeControls = ({ currentSize, onSizeChange }: FontSizeControls
           className={`${buttonBaseClass} text-xs ${
             currentSize === FontSize.SMALL ? activeClass : inactiveClass
           }`}
-          aria-label="Mała czcionka"
+          aria-label="Small font"
           aria-pressed={currentSize === FontSize.SMALL}
         >
           A
@@ -31,7 +31,7 @@ export const FontSizeControls = ({ currentSize, onSizeChange }: FontSizeControls
           className={`${buttonBaseClass} text-base ${
             currentSize === FontSize.MEDIUM ? activeClass : inactiveClass
           }`}
-          aria-label="Średnia czcionka"
+          aria-label="Medium font"
           aria-pressed={currentSize === FontSize.MEDIUM}
         >
           A
@@ -41,7 +41,7 @@ export const FontSizeControls = ({ currentSize, onSizeChange }: FontSizeControls
           className={`${buttonBaseClass} text-lg ${
             currentSize === FontSize.LARGE ? activeClass : inactiveClass
           }`}
-          aria-label="Duża czcionka"
+          aria-label="Large font"
           aria-pressed={currentSize === FontSize.LARGE}
         >
           A
