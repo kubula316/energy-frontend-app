@@ -6,13 +6,13 @@ interface FontSizeControlsProps {
 }
 
 export const FontSizeControls = ({ currentSize, onSizeChange }: FontSizeControlsProps) => {
-  const buttonBaseClass = "px-3 py-1.5 rounded-md text-sm font-medium transition-all duration-200";
+  const buttonBaseClass = "min-w-[32px] px-2 md:px-3 py-1.5 rounded-md text-sm font-medium transition-all duration-200";
   const activeClass = "bg-blue-600 text-white shadow-md ring-2 ring-blue-500 ring-offset-1 dark:ring-offset-gray-800 scale-105";
   const inactiveClass = "bg-gray-200 text-gray-700 hover:bg-gray-300 hover:scale-105 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600";
 
   return (
     <div className="flex items-center gap-2">
-      <span className="text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wide">
+      <span className="text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wide hidden md:inline">
         Font:
       </span>
       <div className="flex gap-1">
