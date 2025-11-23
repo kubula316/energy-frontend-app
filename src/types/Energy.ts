@@ -61,7 +61,7 @@ export const transformApiToDailyEnergyMix = (apiData: ApiDailyEnergyMix): DailyE
     { source: EnergySource.BIOMASS, percentage: apiData.averageGenerationMix.biomass },
     { source: EnergySource.IMPORTS, percentage: apiData.averageGenerationMix.imports },
     { source: EnergySource.OTHER, percentage: apiData.averageGenerationMix.other },
-  ].filter(item => item.percentage > 0);
+  ].filter(item => item.percentage >= 0.1);
 
   return {
     date: apiData.date,
