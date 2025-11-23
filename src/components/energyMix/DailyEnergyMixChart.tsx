@@ -33,6 +33,7 @@ export const DailyEnergyMixChart = ({data, fontSize}: DailyEnergyMixChartProps) 
 
     return (
         <div
+            data-testid="daily-chart"
             className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border-2 border-gray-200 dark:border-gray-700">
             <div className="mb-4">
                 <h3 className={`${titleSize} font-bold text-gray-900 dark:text-white mb-2`}>

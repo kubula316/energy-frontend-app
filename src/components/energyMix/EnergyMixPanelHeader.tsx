@@ -33,20 +33,20 @@ export const EnergyMixPanelHeader = ({ fontSize }: EnergyMixPanelHeaderProps) =>
   return (
     <div className="bg-gradient-to-r from-blue-500 to-green-500 dark:from-blue-600 dark:to-green-600 px-8 py-6 border-b border-gray-200 dark:border-gray-600">
       <div className="flex items-center gap-3 mb-2">
-        <span className={`${iconSize}`} role="img" aria-label="Wykres">
+        <span className={`${iconSize}`} role="img" aria-label="Mix energy icon">
           📊
         </span>
-        <h2 className={`${titleSize} font-bold text-white`}>
+        <h2 className={`${titleSize} font-bold text-white`} aria-label="Mix title">
           Energy Mix Forecast
         </h2>
       </div>
       <div className={`flex items-center gap-4 ${metaSize} text-white/90`}>
         <span className="flex items-center gap-1.5">
-          <span className={metaIconSize}>📅</span>
+          <span className={metaIconSize} aria-label="Mix date icon">📅</span>
           Next 3 days
         </span>
-        <span className="hidden sm:inline text-white/60">•</span>
-        <span className="hidden sm:flex items-center gap-1.5">
+        <span className="hidden sm:inline text-white/60" aria-label="Source icon">•</span>
+        <span className="hidden sm:flex items-center gap-1.5" aria-label="Mix source">
           Data for UK
         </span>
       </div>
